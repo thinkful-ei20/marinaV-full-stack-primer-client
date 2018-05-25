@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import FormToAddCheese from './FormToAddCheese';
 import CheeseList from './cheese-list';
 import { fetchCheeseFromApi } from '../actions/index';
 import logo from '../logo.svg';
@@ -15,6 +16,7 @@ class App extends Component {
         <h2>Get some cheese:</h2>
         <CheeseList cheeses={this.props.cheeses}/>
         <button onClick={() => this.props.dispatch(fetchCheeseFromApi())}>Get me data</button>
+        <FormToAddCheese />
         {/*<header className="App-header">*/}
           {/*<img src={logo} className="App-logo" alt="logo" />*/}
           {/*<h1 className="App-title">Welcome to React</h1>*/}
