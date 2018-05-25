@@ -1,17 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
+import store from './store';
+import {Provider} from 'react-redux';
 
-const cheeses = [
-  "Bath Blue",
-  "Barkham Blue",
-  "Buxton Blue",
-  "Cheshire Blue",
-  "Devon Blue",
-  "Dorset Blue Vinney"
-];
 
-ReactDOM.render(<App cheeses={cheeses}/>, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'));
 registerServiceWorker();

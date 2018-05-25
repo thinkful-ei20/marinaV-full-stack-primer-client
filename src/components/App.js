@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import CheeseList from './components/cheese-list';
-import logo from './logo.svg';
-import './App.css';
+import {connect} from 'react-redux';
+import CheeseList from './cheese-list';
+import { fetchCheeseFromApi } from '../actions/index';
+import logo from '../logo.svg';
+import '../App.css';
 
 
 
 class App extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props.cheeses);
     return (
       <div className="App">
         <h2>Get some cheese:</h2>
         <CheeseList cheeses={this.props.cheeses}/>
+        <button onClick={() => this.props.dispatch(fetchCheeseFromApi())}>Get me data</button>
         {/*<header className="App-header">*/}
           {/*<img src={logo} className="App-logo" alt="logo" />*/}
           {/*<h1 className="App-title">Welcome to React</h1>*/}
@@ -24,4 +27,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  cheeses: state.cheeseReducer.cheeses
+});
+
+export default connect(mapStateToProps)(App);
